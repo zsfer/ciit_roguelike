@@ -5003,7 +5003,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_383
+      name: dash_potion
       rect:
         serializedVersion: 2
         x: 32
@@ -8057,7 +8057,6 @@ TextureImporter:
       environment_451: 1288347730
       environment_367: 1860478792
       environment_255: -215889537
-      environment_383: 287245494
       environment_384: 1343115991
       environment_353: -209200430
       environment_144: -1531134401
@@ -8217,6 +8216,7 @@ TextureImporter:
       environment_443: 1951887204
       environment_218: -1207885611
       environment_460: 1476221749
+      dash_potion: 287245494
       environment_184: -1707394585
       environment_1: 146135662
       environment_378: 289092016
@@ -8311,11 +8311,11 @@ TextureImporter:
       environment_155: -437810521
       environment_327: 275963341
       environment_22: 1863624911
-      environment_305: 157837680
+      environment_177: -1938183848
       environment_341: 1318118787
       environment_53: 482378369
+      environment_305: 157837680
       environment_459: 1205897092
-      environment_177: -1938183848
       environment_8: 337400668
       environment_473: -1907839754
       environment_83: 1219689357
