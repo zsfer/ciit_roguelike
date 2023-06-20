@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,34 +13,34 @@ public class PlayerDash : MonoBehaviour
     private readonly float m_dashMultiplier = 1000f;
     private Rigidbody2D m_rb;
 
-    private Inventory m_inventory;
-    private bool m_canDash;
+    private int m_dashCharge;
 
     [SerializeField] private TextMeshProUGUI m_dashTip;
+    [SerializeField] private TextMeshProUGUI m_dashChargeText;
 
     private void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        m_inventory = GetComponent<Inventory>();
-        m_inventory.OnInventoryUpdate += UpdateDash;
 
         GetComponent<PlayerMovement>().PlayerInput.Player.Dash.performed += Dash;
 
         m_dashTip.gameObject.SetActive(false);  
     }
 
-    void UpdateDash(int coins)
-    {
-        m_canDash = coins >= 5;
-
-        m_dashTip.gameObject.SetActive(m_canDash);
-    }
+    private bool m_canDash => m_dashCharge > 0;
 
     private void Dash(InputAction.CallbackContext context)
     {
         if (!m_canDash) return;
         m_rb.AddForce(m_dashDistance * m_dashMultiplier * m_rb.velocity.normalized);
-        m_inventory.RemoveCoins(5);
+        AddDash(-1);
+    }
+
+    public void AddDash(int amount = 1) 
+    {
+        m_dashCharge += amount;
+        m_dashTip.gameObject.SetActive(m_canDash);
+        m_dashChargeText.text = "Dash " + string.Concat(Enumerable.Repeat("+", m_dashCharge));
     }
 
 }
