@@ -17,9 +17,12 @@ public class PotionSpawner : MonoBehaviour
 
     IEnumerator SpawnPotions() 
     {
-        yield return new WaitForSeconds(5f);
-        var spawn = GetRandomItem(m_potionList);
-        Instantiate(spawn, GetRandomPosition(m_spawnBox), Quaternion.identity, transform);
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            var spawn = GetRandomItem(m_potionList);
+            Instantiate(spawn, GetRandomPosition(m_spawnBox), Quaternion.identity, transform);
+        }
     }
 
     GameObject GetRandomItem(List<GameObject> list) => m_potionList[Random.Range(0, m_potionList.Count)];
