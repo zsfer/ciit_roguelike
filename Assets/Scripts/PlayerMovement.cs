@@ -9,25 +9,28 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D m_rb;
     private Animator m_animator;
-    private PlayerInputActions m_input;
+    public PlayerInputActions PlayerInput { get; private set; }
 
     [SerializeField] private LayerMask m_groundMask;
+
+    private void Awake()
+    {
+        PlayerInput = new PlayerInputActions();
+        PlayerInput.Player.Enable();
+    }
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
 
-        m_input = new PlayerInputActions();
-        m_input.Player.Enable();
-
-        m_input.Player.Attack.performed += Attack;
+        PlayerInput.Player.Attack.performed += Attack;
     }
 
     void FixedUpdate()
     {
-        m_rb.velocity = m_input.Player.Movement.ReadValue<Vector2>() * m_moveSpeed;
-    }
+        m_rb.velocity = PlayerInput.Player.Movement.ReadValue<Vector2>() * m_moveSpeed;
+    }   
 
     private void Attack(InputAction.CallbackContext context)
     {
@@ -42,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
             m_animator.SetFloat("X", m_rb.velocity.x);
             m_animator.SetFloat("Y", m_rb.velocity.y);
         }
+
+        // Set Walking Layer
 
         m_animator.SetLayerWeight(1, m_rb.velocity.sqrMagnitude);
     }

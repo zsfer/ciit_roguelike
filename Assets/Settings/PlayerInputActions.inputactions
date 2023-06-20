@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "c74fd4e3-fa87-4f4c-baca-3d2208df6530",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -148,8 +157,8 @@
                 },
                 {
                     "name": "",
-                    "id": "1ba7b7a7-e4ba-454b-8711-9876aa870b51",
-                    "path": "<Keyboard>/space",
+                    "id": "59a030d1-18b9-49b8-a0a6-1595e03c9a53",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -159,12 +168,23 @@
                 },
                 {
                     "name": "",
-                    "id": "59a030d1-18b9-49b8-a0a6-1595e03c9a53",
-                    "path": "<Keyboard>/z",
+                    "id": "fef9bbd6-9a4a-4733-9345-d8a9cdaefe86",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Attack",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c57f5888-638a-4b5d-9c78-a38972e1daf1",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -179,6 +199,17 @@
                 {
                     "devicePath": "<Keyboard>",
                     "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Joystick",
+            "bindingGroup": "Joystick",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

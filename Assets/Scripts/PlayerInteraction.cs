@@ -15,8 +15,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            m_inventory.Coins++;
-            Destroy(collision.gameObject);
+            m_inventory.AddCoins();
+            CoinSpawner.Instance.RemoveCoin(collision.gameObject);
         }
     }
 }
