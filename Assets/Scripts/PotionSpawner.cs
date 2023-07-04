@@ -19,7 +19,7 @@ public class PotionSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(m_spawnDuration);
             var spawn = GetRandomItem(m_potionList);
             Instantiate(spawn, GetRandomPosition(m_spawnBox), Quaternion.identity, transform);
         }

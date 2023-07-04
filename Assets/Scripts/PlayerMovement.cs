@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         m_animator = GetComponent<Animator>();
 
         PlayerInput.Player.Attack.performed += Attack;
+        GameManager.Instance.OnGameOver += (string reason) => PlayerInput.Player.Disable();
     }
 
     void FixedUpdate()
