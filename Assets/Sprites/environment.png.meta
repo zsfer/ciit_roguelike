@@ -4961,7 +4961,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_381
+      name: health_potion
       rect:
         serializedVersion: 2
         x: 0
@@ -5045,7 +5045,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_385
+      name: time_potion
       rect:
         serializedVersion: 2
         x: 64
@@ -8023,6 +8023,7 @@ TextureImporter:
       environment_477: 1741530316
       environment_432: -1122484230
       environment_361: -746057360
+      time_potion: -266596557
       environment_132: 306689073
       environment_32: -1086738292
       environment_27: 1762387033
@@ -8212,7 +8213,6 @@ TextureImporter:
       environment_356: -328721211
       environment_119: 1266758849
       environment_480: -478754004
-      environment_381: 596268316
       environment_443: 1951887204
       environment_218: -1207885611
       environment_460: 1476221749
@@ -8250,7 +8250,7 @@ TextureImporter:
       environment_122: 199190568
       environment_128: 383361285
       environment_309: 97207357
-      environment_385: -266596557
+      environment_544: -128975023
       environment_550: -1866870272
       environment_498: 538559475
       environment_542: 692928372
@@ -8259,7 +8259,6 @@ TextureImporter:
       environment_46: 1664559237
       environment_111: -1423781261
       environment_113: -1089416121
-      environment_544: -128975023
       environment_302: -467747343
       environment_528: -1847627232
       environment_350: 633106938
@@ -8430,6 +8429,7 @@ TextureImporter:
       environment_490: 602023745
       environment_124: -1430344939
       environment_497: -1422459919
+      health_potion: 596268316
       environment_48: 281790513
       environment_504: -1389190235
       environment_419: 1418119577

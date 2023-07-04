@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IUpgradeable
 {
     [SerializeField] private float m_moveSpeed = 3f;
 
@@ -52,4 +52,8 @@ public class PlayerMovement : MonoBehaviour
         m_animator.SetLayerWeight(1, m_rb.velocity.sqrMagnitude);
     }
 
+    public void Upgrade(float value)
+    {
+        m_moveSpeed += value;
+    }
 }

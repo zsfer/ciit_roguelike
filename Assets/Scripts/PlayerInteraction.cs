@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
     private Inventory m_inventory;
-    private PlayerDash m_dash;
+    private LevellingComponent m_levelling;
 
     private Animator m_anim;
 
@@ -15,12 +15,12 @@ public class PlayerInteraction : MonoBehaviour
     private void Start()
     {
         m_inventory = GetComponent<Inventory>();
-        m_dash = GetComponent<PlayerDash>();
         m_anim = GetComponent<Animator>();
+        m_levelling = GetComponent<LevellingComponent>();
 
         var health = GetComponent<HealthComponent>();
         health.OnDie += Die;
-        health.OnDamage += UpdateStatsUI;
+        health.OnHealthChange += UpdateStatsUI;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,13 +28,8 @@ public class PlayerInteraction : MonoBehaviour
         if (collision.CompareTag("Coin"))
         {
             m_inventory.AddCoins();
+            m_levelling.AddXP(1);
             CoinSpawner.Instance.RemoveCoin(collision.gameObject);
-        }
-
-        if (collision.CompareTag("DashPotion")) 
-        {
-            m_dash.AddDash();
-            Destroy(collision.gameObject);
         }
     }
 
