@@ -5,7 +5,7 @@ using UnityEngine;
 public delegate void DieEventHandler(string causeOfDeath = "Natural Causes");
 public delegate void HealthChangeHandler(int damage, int health);
 
-public class HealthComponent : MonoBehaviour, IUpgradeable
+public class HealthComponent : Upgradable
 {
     public int MAX_HEALTH = 100;
 
@@ -40,7 +40,7 @@ public class HealthComponent : MonoBehaviour, IUpgradeable
         OnHealthChange.Invoke(0, Health);
     }
 
-    public void Upgrade(float value) {
+    public override void Upgrade(float value) {
         MAX_HEALTH += (Mathf.RoundToInt(value));
         Heal(MAX_HEALTH);
     }

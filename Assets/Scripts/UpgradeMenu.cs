@@ -15,7 +15,8 @@ class Upgrade
     public float valuePerUpgrade;
     public int cost;
 
-    public IUpgradeable target;
+    [SerializeReference]
+    public Upgradable target;
 }
 
 public class UpgradeMenu : MonoBehaviour
@@ -36,6 +37,8 @@ public class UpgradeMenu : MonoBehaviour
             card.GetComponentInChildren<Button>().onClick.AddListener(() => {
                 upgrade.target.Upgrade(upgrade.valuePerUpgrade);
                 upgrade.currentLevel++;
+
+                LevellingComponent.Instance.ResetLevel();
             });
         }
     }

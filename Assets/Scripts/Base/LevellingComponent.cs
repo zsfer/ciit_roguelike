@@ -25,6 +25,12 @@ public class LevellingComponent : MonoBehaviour
         m_upgradeMenuUI.SetActive(false);
     }
 
+    public static LevellingComponent Instance {get; private set;}
+    void Awake()
+    {
+        Instance = this;
+    }
+
     public void AddXP(int xp)
     {
         m_currentXP += xp;
@@ -39,5 +45,11 @@ public class LevellingComponent : MonoBehaviour
     void Update()
     {
         m_xpBar.size = (float)m_currentXP / (float)m_xpRequired;
+    }
+
+    public void ResetLevel()
+    {
+        m_currentXP = 0;
+        m_upgradeMenuUI.SetActive(false);
     }
 }
