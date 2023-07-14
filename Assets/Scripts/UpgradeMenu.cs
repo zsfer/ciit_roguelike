@@ -33,11 +33,12 @@ public class UpgradeMenu : MonoBehaviour
         {
             var card = Instantiate(m_upgradeCardPrefab, transform);
             card.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = upgrade.name;
-            card.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = string.Concat(Enumerable.Repeat("*", upgrade.currentLevel));
-            card.GetComponentInChildren<Button>().onClick.AddListener(() => {
+            card.GetComponentInChildren<Button>().onClick.AddListener(() =>
+            {
                 upgrade.target.Upgrade(upgrade.valuePerUpgrade);
                 upgrade.currentLevel++;
 
+                card.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = string.Concat(Enumerable.Repeat("*", upgrade.currentLevel));
                 LevellingComponent.Instance.ResetLevel();
             });
         }

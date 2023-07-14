@@ -15,6 +15,12 @@ public class Inventory : MonoBehaviour
     public delegate void InventoryNotify(int coins);
     public event InventoryNotify OnInventoryUpdate;
 
+    public static Inventory Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void AddCoins(int amount = 1)
     {
         Coins += amount;

@@ -10,15 +10,19 @@ public class HealthComponent : Upgradable
     public int MAX_HEALTH = 100;
 
     [field: SerializeField]
-    public int Health {get; private set;} = 100;
+    public int Health { get; private set; } = 100;
+
+    public bool Invincible { get; set; }
 
     public event DieEventHandler OnDie;
     public event HealthChangeHandler OnHealthChange;
 
     private string m_recentDamageTakenFrom;
 
-    public void Damage(int damage, string cause) 
+    public void Damage(int damage, string cause)
     {
+        if (Invincible) return;
+
         Health -= damage;
         m_recentDamageTakenFrom = cause;
 
@@ -27,20 +31,20 @@ public class HealthComponent : Upgradable
         if (Health <= 0) Die(cause);
     }
 
-    void Die(string cause) 
+    void Die(string cause)
     {
         OnDie.Invoke(cause);
     }
 
     public void Heal(int healAmount)
     {
-        // FIXME refactor to make it cleaner
         if (Health < MAX_HEALTH)
             Health += healAmount;
         OnHealthChange.Invoke(0, Health);
     }
 
-    public override void Upgrade(float value) {
+    public override void Upgrade(float value)
+    {
         MAX_HEALTH += (Mathf.RoundToInt(value));
         Heal(MAX_HEALTH);
     }

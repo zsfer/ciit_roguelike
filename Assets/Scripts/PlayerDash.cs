@@ -24,7 +24,7 @@ public class PlayerDash : MonoBehaviour
 
         GetComponent<PlayerMovement>().PlayerInput.Player.Dash.performed += Dash;
 
-        m_dashTip.gameObject.SetActive(false);  
+        m_dashTip.gameObject.SetActive(false);
     }
 
     private bool m_canDash => m_dashCharge > 0;
@@ -32,15 +32,24 @@ public class PlayerDash : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         if (!m_canDash) return;
+        StartCoroutine("IFrame");
+
         m_rb.AddForce(m_dashDistance * m_dashMultiplier * m_rb.velocity.normalized);
         AddDash(-1);
     }
 
-    public void AddDash(int amount = 1) 
+    public void AddDash(int amount = 1)
     {
         m_dashCharge += amount;
         m_dashTip.gameObject.SetActive(m_canDash);
         m_dashChargeText.text = "Dash " + string.Concat(Enumerable.Repeat("+", m_dashCharge));
+    }
+
+    private IEnumerator IFrame()
+    {
+        GetComponent<HealthComponent>().Invincible = true;
+        yield return new WaitForSeconds(1.5f);
+        GetComponent<HealthComponent>().Invincible = false;
     }
 
 }

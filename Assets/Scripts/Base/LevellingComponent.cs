@@ -9,7 +9,7 @@ public class LevellingComponent : MonoBehaviour
 
     public int m_currentXP;
 
-    public int m_xpGrowthRate = 5;
+    public int m_xpRequired = 10;
 
 
     [SerializeField]
@@ -18,14 +18,13 @@ public class LevellingComponent : MonoBehaviour
     [SerializeField]
     private Scrollbar m_xpBar;
 
-    int m_xpRequired => Mathf.CeilToInt(CurrentLevel + Mathf.Pow(m_xpGrowthRate, 1.4f));
-
     void Start()
     {
         m_upgradeMenuUI.SetActive(false);
+        GameManager.Instance.OnGameOver += (string reason) => m_upgradeMenuUI.SetActive(false);
     }
 
-    public static LevellingComponent Instance {get; private set;}
+    public static LevellingComponent Instance { get; private set; }
     void Awake()
     {
         Instance = this;
@@ -51,5 +50,6 @@ public class LevellingComponent : MonoBehaviour
     {
         m_currentXP = 0;
         m_upgradeMenuUI.SetActive(false);
+        CurrentLevel++;
     }
 }

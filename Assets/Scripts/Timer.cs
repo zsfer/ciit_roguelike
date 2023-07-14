@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 
     public TextMeshProUGUI m_timerText;
 
-    public float CurrentTime {get; private set;}
+    public float CurrentTime { get; private set; }
 
     void Start()
     {
@@ -21,6 +21,11 @@ public class Timer : MonoBehaviour
         CurrentTime -= Time.deltaTime;
 
         m_timerText.text = TimeSpan.FromSeconds(CurrentTime).ToString(@"mm\:ss");
+
+        if (CurrentTime <= 0)
+        {
+            GameManager.Instance.GameOver("Out of time");
+        }
     }
 
     public void AddTime(float additional)
