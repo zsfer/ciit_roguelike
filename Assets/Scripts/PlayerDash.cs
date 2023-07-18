@@ -48,7 +48,7 @@ public class PlayerDash : MonoBehaviour
     private IEnumerator IFrame()
     {
         GetComponent<HealthComponent>().Invincible = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         GetComponent<HealthComponent>().Invincible = false;
     }
 

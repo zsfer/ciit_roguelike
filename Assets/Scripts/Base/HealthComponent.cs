@@ -19,6 +19,8 @@ public class HealthComponent : Upgradable
 
     private string m_recentDamageTakenFrom;
 
+    [SerializeField] GameObject m_shields;
+
     public void Damage(int damage, string cause)
     {
         if (Invincible) return;
@@ -47,5 +49,9 @@ public class HealthComponent : Upgradable
     {
         MAX_HEALTH += (Mathf.RoundToInt(value));
         Heal(MAX_HEALTH);
+    }
+
+    private void Update() {
+        m_shields.SetActive(Invincible);
     }
 }

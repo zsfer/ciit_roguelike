@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +9,8 @@ public class Timer : MonoBehaviour
 
     public float CurrentTime { get; private set; }
 
+    public bool Active {get;set;}
+
     void Start()
     {
         CurrentTime = GameManager.Instance.Settings.STARTING_TIME;
@@ -18,9 +18,10 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        m_timerText.text = TimeSpan.FromSeconds(CurrentTime).ToString(@"mm\:ss");
+        if(!Active) return;
         CurrentTime -= Time.deltaTime;
 
-        m_timerText.text = TimeSpan.FromSeconds(CurrentTime).ToString(@"mm\:ss");
 
         if (CurrentTime <= 0)
         {

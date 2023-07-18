@@ -44,18 +44,11 @@ public class GameManager : MonoBehaviour
         LevellingComponent.Instance.OnLevelUp += () => SpawnTrap(false, 1);
     }
 
-    private void OnEnable() {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+    public void StartGame() {
+        Timer.Active = true;
 
-    private void OnDisable() {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mod) {
         SpawnTrap(true, 4);
     }
-
 
     public void PauseGame() => IsPaused = true;
 
@@ -66,6 +59,7 @@ public class GameManager : MonoBehaviour
         m_gameOverText.gameObject.SetActive(true);
         m_gameOverText.text = $"<color=red>{reason}</color>" + "\nPress R to restart";
         m_gameOver = true;
+        Timer.Active = false;
     }
 
     private void Update() {

@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
         if (m_target == null)
             m_target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        m_offset = transform.position;
+        m_offset = Vector3.forward * -10;
     }
 
     void LateUpdate()
