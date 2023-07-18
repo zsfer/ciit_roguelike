@@ -18,6 +18,10 @@ public class FollowTarget : MonoBehaviour
         m_agent.updateRotation = false;
         m_agent.updateUpAxis = false;
         m_agent.speed = m_moveSpeed;
+
+        if (Target == null) {
+            Target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     void Update()

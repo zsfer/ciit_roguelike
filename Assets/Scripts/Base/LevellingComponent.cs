@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public delegate void LevelChangeEvent();
+
 public class LevellingComponent : MonoBehaviour
 {
     public int CurrentLevel { get; private set; } = 1;
@@ -10,6 +12,8 @@ public class LevellingComponent : MonoBehaviour
     public int m_currentXP;
 
     public int m_xpRequired = 10;
+
+    public event LevelChangeEvent OnLevelUp;
 
 
     [SerializeField]
@@ -38,6 +42,7 @@ public class LevellingComponent : MonoBehaviour
         {
             GameManager.Instance.PauseGame();
             m_upgradeMenuUI.SetActive(true);
+            OnLevelUp.Invoke();
         }
     }
 

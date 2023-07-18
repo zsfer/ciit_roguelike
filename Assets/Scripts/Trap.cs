@@ -15,9 +15,12 @@ public class Trap : MonoBehaviour
     private bool m_isActive = false;
     private GameObject m_target;
 
+    private FollowTarget m_follow;
+
     void Start()
     {
         m_anim = GetComponent<Animator>();
+        m_follow = GetComponent<FollowTarget>();
     }
 
     void OnTriggerEnter2D(Collider2D col) 
@@ -28,6 +31,8 @@ public class Trap : MonoBehaviour
             m_anim.SetBool("Active", true);
 
             m_target = col.gameObject;
+
+            m_follow.enabled = false;
 
             if (InstantDamage) DamagePlayer();
         }
@@ -49,5 +54,7 @@ public class Trap : MonoBehaviour
         yield return new WaitForSeconds(Cooldown);
         m_isActive = false;
         m_anim.SetBool("Active", false);
+
+        m_follow.enabled = true;
     }
 }

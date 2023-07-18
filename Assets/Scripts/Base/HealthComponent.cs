@@ -28,7 +28,7 @@ public class HealthComponent : Upgradable
 
         OnHealthChange.Invoke(damage, Health);
 
-        if (Health <= 0) Die(cause);
+        if (Health <= 0) Die("Died to " + cause);
     }
 
     void Die(string cause)
